@@ -1,12 +1,10 @@
 import React from 'react';
-import { {{pascalCase name}}Container } from './{{pascalCase name}}Styled'
+import * as S from './{{pascalCase name}}Styled';
 
-const {{pascalCase name}} = props => {
-  return (
-    <{{pascalCase name}}Container>
-        {{pascalCase name}} works!
-    </{{pascalCase name}}Container>
-  );
-};
+const {{pascalCase name}} = () => (
+  <S.Container>
+    {{pascalCase name}} works!
+  </S.Container>
+);
 
 export default {{pascalCase name}};
