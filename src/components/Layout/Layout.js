@@ -4,10 +4,10 @@ import * as S from './LayoutStyled';
 import Header from '../Header';
 import Footer from '../Footer';
 
-const Layout = ({ children }) => (
+const Layout = ({ children, currentContainer }) => (
   <S.Container>
     <Header />
-    <S.Main>
+    <S.Main currentContainer={currentContainer}>
       {children}
     </S.Main>
     <Footer />
@@ -16,6 +16,11 @@ const Layout = ({ children }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  currentContainer: PropTypes.string,
+};
+
+Layout.defaultProps = {
+  currentContainer: 'home',
 };
 
 export default Layout;

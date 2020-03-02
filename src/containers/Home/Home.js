@@ -1,14 +1,34 @@
-import React from 'react';
-import { Layout } from '../../components';
+import React, { useEffect, useState } from 'react';
+import { Layout, Card } from '../../components';
+import api from '../../services/api';
 
-const Home = () => (
-  <Layout>
-    <div>
-      <section style={{ backgroundColor: '#c4c4c4', height: '100px', margin: '8px' }}>
-        home works
-      </section>
-    </div>
-  </Layout>
-);
+const Home = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function getAll() {
+      const response = await api.get('pokemon');
+      setData(response.data.results);
+      console.log(response.data.results);
+    }
+
+    getAll();
+  }, []);
+
+  return (
+    <Layout>
+      {
+        data.map((res) => (
+          <Card key={res.name}>
+            <section style={{ height: '100px' }}>
+              {res.name}
+            </section>
+          </Card>
+        ))
+        || <div> </div>
+        }
+    </Layout>
+  );
+};
 
 export default Home;
